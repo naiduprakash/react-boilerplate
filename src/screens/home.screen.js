@@ -3,8 +3,10 @@ import React from 'react';
 const HomeScreen = () => {
   return (
     <div className="root">
-      <h2>Happy Coding</h2>
-      <span>Bootstrap, jQuery, Fontawesome are included</span>
+      <h2>react-boilerplate</h2>
+      <span>
+        Fork of create-react-app with Bootstrap, Font Awesome and jQuery
+      </span>
 
       {/* <!-- Button trigger modal --> */}
       <button
