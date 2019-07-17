@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HomeScreen = () => {
+const CreateProjectScreen = () => {
   return (
     <div className="page-show-all-countries">
       <div className="content">content goes here</div>
@@ -8,4 +8,4 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default CreateProjectScreen;

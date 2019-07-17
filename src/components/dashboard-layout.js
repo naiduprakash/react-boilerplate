@@ -10,11 +10,14 @@ class DashboardLayout extends React.Component {
   constructor(props) {
     super(props);
 
-    let { width, height } = getWindowDimensions();
-    console.log(width, height);
+    let { width } = getWindowDimensions();
     this.state = {
-      isDrawerOpen: width > 767
+      isDrawerOpen: width > 991
     };
+  }
+
+  componentDidMount() {
+    console.log('dashboard-layout mounting');
   }
 
   toggleDrawer = isDrawerOpen => {
@@ -25,7 +28,7 @@ class DashboardLayout extends React.Component {
   };
 
   render() {
-    let { component: Component, ...rest } = this.props;
+    let { component: Component, activeTopMenu, ...rest } = this.props;
     let { isDrawerOpen } = this.state;
     return (
       <main className="page-wrapper page-layout page-layout-dashboard">
@@ -37,7 +40,10 @@ class DashboardLayout extends React.Component {
           <Header toggleDrawer={this.toggleDrawer} />
         </header>
         <aside className={`page-sidebar ${isDrawerOpen ? 'show-drawer' : ''}`}>
-          <Sidebar />
+          <Sidebar
+            toggleDrawer={this.toggleDrawer}
+            activeTopMenu={activeTopMenu}
+          />
         </aside>
         <article
           className={`page-content ${isDrawerOpen ? 'show-drawer' : ''}`}

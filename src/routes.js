@@ -1,12 +1,17 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from 'react-router-dom';
 import withLoadable from './components/with-loadable';
 
 import DashboardLayout from './components/dashboard-layout';
 import DefaultLayout from './components/default-layout';
 
-const ShowAllCountriesScreen = withLoadable({
-  loader: () => import('./screens/show-all-countries.screen')
+const CreateProjectScreen = withLoadable({
+  loader: () => import('./screens/create-project.screen')
 });
 
 const HomeScreen = withLoadable({
@@ -19,14 +24,33 @@ const HomeScreen = withLoadable({
  */
 const supportsHistory = 'pushState' in window.history;
 
+/**
+ * activeTopMenu must be one of ( admin | sop-setup | project-setup |
+ * project-implementation | functional-dashboard | leadership-dashboard )
+ */
+
 const Routes = props => {
   return (
     <Router forceRefresh={!supportsHistory}>
       <Switch>
+        <Redirect exact from="/" to="/project-setup/create-project" />
         <DashboardLayout
           exact
-          path="/admin/countries"
-          component={ShowAllCountriesScreen}
+          path="/sop-setup"
+          component={CreateProjectScreen}
+          activeTopMenu="sop-setup"
+        />
+        <DashboardLayout
+          exact
+          path="/project-setup"
+          component={CreateProjectScreen}
+          activeTopMenu="project-setup"
+        />
+        <DashboardLayout
+          exact
+          path="/project-setup/create-project"
+          component={CreateProjectScreen}
+          activeTopMenu="project-setup"
         />
         <DefaultLayout exact path="/login" component={HomeScreen} />
         <Route component={() => <span>Page Not Found!</span>} />

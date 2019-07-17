@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 import imgLogo from '../assets/images/logo.png';
 
 class Header extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   toggleSidebar = () => {
     let { toggleDrawer } = this.props;
@@ -16,17 +16,17 @@ class Header extends React.Component {
       <React.Fragment>
         <nav className="navbar">
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             onClick={this.toggleSidebar}
           >
-            <span class="fa fa-bars" />
+            <span className="fa fa-bars" />
           </button>
-          <div className="logo-wrapper-header d-block d-sm-none">
+          <div className="logo-wrapper-header d-block d-sm-block d-md-block d-lg-none">
             <img className="logo" src={imgLogo} alt="logo" />
           </div>
 
-          <ul className="main-nav d-none d-sm-block">
+          <ul className="main-nav d-none d-sm-none d-md-none d-lg-block">
             <li className="main-nav_item">
               <NavLink to="/admin" className="main-nav_item-wrapper">
                 <span className="link-icon">
@@ -36,41 +36,50 @@ class Header extends React.Component {
               </NavLink>
             </li>
             <li className="main-nav_item">
-              <NavLink to="/admin" className="main-nav_item-wrapper">
+              <NavLink to="/sop-setup" className="main-nav_item-wrapper">
                 <span className="link-icon">
-                  <i className="fa fa-user" />
+                  <i className="fa fa-cogs" />
                 </span>
                 <span className="link-text">SOP Setup</span>
               </NavLink>
             </li>
             <li className="main-nav_item">
-              <NavLink to="/admin" className="main-nav_item-wrapper">
+              <NavLink to="/project-setup" className="main-nav_item-wrapper">
                 <span className="link-icon">
-                  <i className="fa fa-user" />
+                  <i className="fa fa-sliders" />
                 </span>
                 <span className="link-text">Project Setup</span>
               </NavLink>
             </li>
             <li className="main-nav_item">
-              <NavLink to="/admin" className="main-nav_item-wrapper">
+              <NavLink
+                to="/project-implementation"
+                className="main-nav_item-wrapper"
+              >
                 <span className="link-icon">
-                  <i className="fa fa-user" />
+                  <i className="fa fa-line-chart" />
                 </span>
                 <span className="link-text">Project Implementation</span>
               </NavLink>
             </li>
             <li className="main-nav_item">
-              <NavLink to="/admin" className="main-nav_item-wrapper">
+              <NavLink
+                to="/functional-dashboard"
+                className="main-nav_item-wrapper"
+              >
                 <span className="link-icon">
-                  <i className="fa fa-user" />
+                  <i className="fa fa-tachometer" />
                 </span>
                 <span className="link-text">Functional Dashboard</span>
               </NavLink>
             </li>
             <li className="main-nav_item">
-              <NavLink to="/admin" className="main-nav_item-wrapper">
+              <NavLink
+                to="/leadership-dashboard"
+                className="main-nav_item-wrapper"
+              >
                 <span className="link-icon">
-                  <i className="fa fa-user" />
+                  <i className="fa fa-tachometer" />
                 </span>
                 <span className="link-text">Leadership Dashboard</span>
               </NavLink>
@@ -80,7 +89,6 @@ class Header extends React.Component {
           <ul className="nav navbar-right nav-user-icon">
             <li className="dropdown c-pointer">
               <div
-                href="#"
                 className="dropdown-toggle"
                 data-toggle="dropdown"
                 role="button"
@@ -100,7 +108,7 @@ class Header extends React.Component {
                   <NavLink to="/admin/change-password">Change Password</NavLink>
                 </li>
                 <li>
-                  <a href="#">Sign Out</a>
+                  <NavLink to="/">Sign Out</NavLink>
                 </li>
               </ul>
             </li>
